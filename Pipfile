@@ -53,6 +53,9 @@ prompt_toolkit = "*"
 Pygments = "*"
 Werkzeug = "*"
 django-heroku = "*"
+selenium = "*"
+time = "*"
+smtplib = "*"
 
 [dev-packages]
 
