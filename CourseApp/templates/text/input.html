@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Course Input</title>
+	</head>
+	<body>
+		<h1>Receive Text Notification On UIUC Class</h1>
+		<h3>Directions</h3>
+		<ol>
+			<li>For 'Subject', enter abreviation (e.g. CS, MUS)</li>
+			<li>'Sections' may be a single section, or a comma-separated list (e.g. AL1, BL1)</li>
+			<li>'Email' must be a personal gmail account</li>
+			<li>Wait for the request to finish before trying another one (request times out after 24 hours if the course doesn't become available)
+			<li>Receive text within 30 seconds of course becoming available</li>
+		</ol>
+			
+		<form action="/text/out" method="post">
+			{% csrf_token %}
+			<input type="text" name="subject" placeholder="Subject">
+			<input type="text" name="course" placeholder="Course Number">
+			<input type="text" name="sections" placeholder="Sections"><br>
+			<input type="text" name="net_id" placeholder="NetID">
+			<input type="password" name="pw" placeholder="NetID Password"><br>
+			<input type="text" name="email" placeholder="Email">
+			<input type="password" name="em_pw" placeholder="Email Password">
+			<input type="text" pattern="[0-9]{10}" autofocus required title="Format: ##########" name="phone" placeholder="Cell Phone"><br>
+			<label for="p">Mobile Provider:</label>
+			<select id="p" name="provider">
+				<option value="sel">Select one ...</option>
+				<option value="AllTel">AllTel</option>
+				<option value="AT&T">AT&T</option>
+				<option value="Boost">Boost Mobile</option>
+				<option value="Cricket">Cricket</option>
+				<option value="Sprint">Sprint</option>
+				<option value="T">T-Mobile</option>
+				<option value="US">US Cellular</option>
+				<option value="Verizon">Verizon</option>
+				<option value="Virgin">Virgin Mobile</option>
+			</select>
+			<p><button>Submit</button></p>
+		</form>
+	</body>
+</html>
