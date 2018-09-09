@@ -1,8 +1,10 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 import time
 import smtplib
 import sys
+import os
 
 def everything():
 	url="https://apps.uillinois.edu/selfservice/"
@@ -12,7 +14,12 @@ def everything():
 	netID=sys.argv[4]
 	password=sys.argv[5]
 	
-	browser=webdriver.Chrome()
+	chrome_options = Options()
+	chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+	chrome_options.add_argument('--disable-gpu')
+	chrome_options.add_argument('--no-sandbox')
+	browser = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
+	#browser=webdriver.Chrome()
 	browser.get(url)
 	link1=browser.find_element_by_xpath("//*[@id='ctl00_ContentPlaceHolder1_ctl06_pnlTemplatedContent']/div/div/div[2]/a") #change here
 	link1.click()
